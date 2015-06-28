@@ -1,0 +1,5 @@
+to start cd into directory and run command
+
+http-server
+
+This will serve at http://localhost:8080/ 
