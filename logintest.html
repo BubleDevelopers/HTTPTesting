@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<script src="/scripts/loadScript.js"></script>
+
+<script src="/scripts/buttonScript.js"></script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+
+<div id="status">
+</div>
+
+<form>
+<p>
+Press the button to display an alert box (hopefully)
+</p>
+<br>
+<button onclick="myFunction()">Try it</button>
+</form>
+
+<script >
+function myFunction(){
+  FB.api(
+    alert("Now inside of the FB.api method");
+    "/me/taggable_friends",
+    function (response) {
+      if (response && !response.error) {
+        alert("Loaded your taggable friends");
+      }
+    }
+  );
+}
+</script>
+
+
+<form action = "https://graph.facebook.com/oauth/authorize?
+    type=user_agent&
+    client_id=116122545078207&
+    redirect_uri=http%3A%2F%2Fbenbiddington.wordpress.com&
+    scope=user_photos,email,taggable_friends" method="GET">
+<p>
+Press this submit button to see a list of your friends
+<p>
+<br>
+<input type="submit" value="submit new entry">
+</form>
+
+</body>
+</html>
+
+<!--
+OTHER FACEBOOK LOGIN BUTTON
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+
+-->
