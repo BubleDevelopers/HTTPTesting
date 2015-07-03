@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 <head>
 <title>Facebook Login JavaScript Example</title>
 <meta charset="UTF-8">
@@ -15,10 +15,13 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-
 <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
 
+
 <div id="status">
+</div>
+
+<div id="friends">
 </div>
 
 <form>
@@ -29,19 +32,6 @@ Press the button to display an alert box (hopefully)
 <button onclick="myFunction()">Try it</button>
 </form>
 
-<script >
-function myFunction(){
-  FB.api(
-    alert("Now inside of the FB.api method");
-    "/me/taggable_friends",
-    function (response) {
-      if (response && !response.error) {
-        alert("Loaded your taggable friends");
-      }
-    }
-  );
-}
-</script>
 
 
 <form action = "https://graph.facebook.com/oauth/authorize?
@@ -63,5 +53,4 @@ Press this submit button to see a list of your friends
 OTHER FACEBOOK LOGIN BUTTON
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-
--->
+<!--

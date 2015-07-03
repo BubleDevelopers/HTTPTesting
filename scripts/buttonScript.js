@@ -9,6 +9,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+	  testFriends();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -36,7 +37,7 @@
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.3' // use version 2.2
+    version    : 'v2.3' // use version 2.3
   });
 
   // Now that we've initialized the JavaScript SDK, we call 
@@ -65,7 +66,7 @@
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-
+  
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
@@ -74,5 +75,13 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+  // Trying to display friends 
+  function testFriends() {
+    console.log('Looking up friends.... ');
+    FB.api('/me/taggable_friends', function(response) {
+      document.getElementById('status').innerHTML =
+        'We see that you have ' + response.taggable_friends.length + 'on FaceBook!';
     });
   }
