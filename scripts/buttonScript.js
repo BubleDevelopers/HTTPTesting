@@ -10,6 +10,7 @@
       // Logged into your app and Facebook.
           testAPI();
 	  testFriends();
+	  testPicture();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -87,5 +88,16 @@
 	  console.log(response);
       document.getElementById('friends').innerHTML =
         'We see that you have ' + response.summary.total_count + ' on FaceBook!';
+    });
+  }
+
+  // Trying to display friends 
+  function testPicture() {
+    console.log('Getting your profile picture.... ');
+    FB.api('/me/picture', function(response) {
+	  console.log('Picture response object');
+	  console.log(response);
+      document.getElementById('picture').innerHTML =
+        'You can find your profile picture here: ' + response.data.url;
     });
   }
